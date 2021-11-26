@@ -6,3 +6,21 @@ body,
   margin: 0;
   padding: 0;
 }
+
+.el-aside {
+  background-color: #ccfef3;
+}
+.el-submenu {
+  font-size: 10px;
+}
+.el-breadcrumb{
+  font-size: 10px;
+  margin-bottom: 20px;
+}
+.el-card{
+  box-shadow: 0 1px 1px rgb(0, 0, 0, 0.15) !important ;
+}
+.el-table{
+  margin-top: 15px;
+  font-size: 10px;
+}

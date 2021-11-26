@@ -7,13 +7,16 @@
         <img src="../assets/mina6.jpg" alt="" />
         <span>twice后台管理系统</span>
       </div>
+
       <el-button type="warning" round @click="loginOut">离开</el-button>
     </el-header>
     <el-container>
       <!-- 侧边栏区域 -->
-      <el-aside width="200px">
+      <el-aside :width="isCollapse ? '64px' : '200px'">
+        <!-- 折叠按钮 -->
+        <div class="collapseBtn" @click="toggleCollapse">|||</div>
         <!-- 菜单区 -->
-        <el-menu active-text-color="#3EBFA0">
+        <el-menu active-text-color="#3EBFA0" unique-opened :collapse="isCollapse" :collapse-transition="false" :router="true" :default-active="activePath">
           <!-- 一级菜单区 -->
           <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
             <template slot="title">
@@ -21,7 +24,7 @@
               <span>{{ item.authName }}</span>
             </template>
             <!-- 二级菜单区 -->
-            <el-menu-item :index="subitem.id + ''" v-for="subitem in item.children" :key="subitem.id">
+            <el-menu-item :index="'/' + subitem.path" v-for="subitem in item.children" :key="subitem.id" @click="saveActivePath('/' + subitem.path)">
               <i class="el-icon-menu"></i>
               <span>{{ subitem.authName }}</span>
             </el-menu-item>
@@ -41,17 +44,22 @@ export default {
       // 左侧菜单数据
       menulist: [],
       iconObj: {
-        125: 'iconfont icon-yonghu',
+        125: 'iconfont icon-yonghu1',
         103: 'iconfont icon-quanxian',
         101: 'iconfont icon-shangpin',
-        102: 'iconfont icon-shouye',
+        102: 'iconfont icon-dingdandingdanmingxishouzhimingxi',
         145: 'iconfont icon-shuju'
-      }
+      },
+      // 侧边栏是否折叠
+      isCollapse: false,
+      // 高亮地址
+      activePath: ''
     }
   },
   // 生命周期函数！
   created() {
     this.getMemuList()
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
     loginOut() {
@@ -63,6 +71,15 @@ export default {
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menulist = res.data
       console.log(res)
+    },
+    // 点击按钮切换折叠
+    toggleCollapse() {
+      this.isCollapse = !this.isCollapse
+    },
+    // 保存高亮地址，设置点击时二级菜单高亮
+    saveActivePath(activePath) {
+      window.sessionStorage.setItem('activePath', activePath)
+      this.activePath = activePath
     }
   }
 }
@@ -92,13 +109,15 @@ export default {
     border-radius: 50%;
   }
 }
-.el-aside {
+.collapseBtn {
   background-color: #ccfef3;
+  text-align: center;
+  letter-spacing: 0.2em;
+  font-size: 10px;
+  line-height: 24px;
+  cursor: pointer;
 }
-.el-submenu{
-  font-size: 10px
-}
-.el-button {
-  background-color: #61d7b4;
+.el-button{
+   background-color: #61d7b4;
 }
 </style>
