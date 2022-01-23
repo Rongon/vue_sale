@@ -5,6 +5,7 @@ import './plugins/element.js'
 import './assets/css/global.css'
 import '../src/assets/fonts/iconfont.css'
 import axios from 'axios'
+import TreeTable from 'vue-table-with-tree-grid'
 
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 设置token令牌才可以访问需要授权的api
@@ -15,6 +16,8 @@ axios.interceptors.request.use(config => {
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
+
+Vue.component('TreeTable', TreeTable)
 
 new Vue({
   router,
