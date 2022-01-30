@@ -25,3 +25,6 @@ body,
   margin-top: 15px;
   font-size: 10px;
 }
+.ql-editor{
+  min-height: 300px;
+}
