@@ -117,7 +117,7 @@ export default {
   line-height: 24px;
   cursor: pointer;
 }
-.el-button{
-   background-color: #61d7b4;
+.el-button {
+  background-color: #61d7b4;
 }
 </style>

@@ -253,7 +253,6 @@ export default {
     async showEditDialog(id) {
       const { data: res } = await this.$http.get('users/' + id)
       if (res.meta.status !== 200) {
-        console.log(res.meta.status)
         return this.$message.error('查询用户失败')
       }
       this.$message.success('查询用户成功')
