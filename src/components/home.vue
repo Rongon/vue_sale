@@ -4,8 +4,8 @@
     <!-- 头部区域 -->
     <el-header>
       <div>
-        <img src="../assets/mina6.jpg" alt="" />
-        <span>twice后台管理系统</span>
+        <img src="../assets/2.png" alt="" />
+        <span>商品数据后台管理系统</span>
       </div>
 
       <el-button type="warning" round @click="loginOut">离开</el-button>

@@ -3,7 +3,7 @@
     <div class="login_box">
       <!--头像区-->
       <div class="avatar_box">
-        <img src="../assets/michaeng.jpg" alt="" />
+        <img src="../assets/1.png" alt="" />
       </div>
       <!--登录区-->
       <el-form label-width="0px" class="login_form" :model="loginForm" :rules="loginFormRules" ref="loginFormRef">
@@ -17,7 +17,7 @@
         </el-form-item>
         <!--登录按钮-->
         <el-form-item class="btns">
-          <el-button circle @click="loginBtns">探寻twice</el-button>
+          <el-button circle @click="loginBtns">登录</el-button>
           <el-button type="info" circle @click="resetLoginForm">重置</el-button>
         </el-form-item>
       </el-form>
@@ -30,8 +30,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: 'admin',
-        password: '123456'
+        username: '',
+        password: ''
       },
       // 验证用户名密码是否合法
       loginFormRules: {
